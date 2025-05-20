@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATS Resume Matcher</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        textarea { width: 100%; height: 150px; margin-bottom: 15px; }
+        input[type=submit] { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>ATS Resume Matcher</h1>
+    <form method="POST">
+        <label><strong>Job Description:</strong></label>
+        <textarea name="jd" required>{{ request.form.jd or '' }}</textarea>
+
+        <label><strong>Your Resume:</strong></label>
+        <textarea name="resume" required>{{ request.form.resume or '' }}</textarea>
+
+        <input type="submit" value="Match & Improve">
+    </form>
+
+    {% if score is not none %}
+        <h2>Match Score: {{ score }}%</h2>
+        <h3>Missing Keywords:</h3>
+        <p>{{ missing_keywords }}</p>
+
+        <h3>Improved Resume:</h3>
+        <textarea readonly>{{ improved_resume }}</textarea>
+    {% endif %}
+</body>
+</html>
