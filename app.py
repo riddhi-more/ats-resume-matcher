@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+#initializze apps
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
@@ -28,3 +29,4 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
